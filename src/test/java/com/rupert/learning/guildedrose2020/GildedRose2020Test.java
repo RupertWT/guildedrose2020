@@ -7,13 +7,25 @@ import org.junit.Test;
 
 public class GildedRose2020Test {
 	
+// 	End to end test
+	
+    @Test
+    public void normal_Item_End_To_End() {  	
+    	Item[] items = new Item[] { new Item("Normal Item", 10, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateItems();
+        assertEquals(9, app.items[0].sellIn); 
+        assertEquals(19, app.items[0].quality); 
+    }
+	
+	
 //	Normal Item SellIn Tests
 	
     @Test
     public void normal_Item_Within_Sell_By_Date_Decrease_SellIn_By_One() {  	
     	Item[] items = new Item[] { new Item("Normal Item", 10, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateQuality();
+        app.updateSellIn();
         assertEquals(9, app.items[0].sellIn); 
     }
     
@@ -21,7 +33,7 @@ public class GildedRose2020Test {
     public void normal_Item_Outside_Sell_By_Date_Decrease_SellIn_By_One() {
     	Item[] items = new Item[] { new Item("Normal Item", 0, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateQuality();
+        app.updateSellIn();
         assertEquals(-1, app.items[0].sellIn); 
     }
     
@@ -73,7 +85,7 @@ public class GildedRose2020Test {
     public void aged_Brie_Within_Sell_By_Date_Decrease_SellIn_By_One() {  	
     	Item[] items = new Item[] { new Item("Aged Brie", 10, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateQuality();
+        app.updateSellIn();
         assertEquals(9, app.items[0].sellIn); 
     }
     
@@ -81,7 +93,7 @@ public class GildedRose2020Test {
     public void aged_Brie_Outside_Sell_By_Date_Decrease_SellIn_By_One() {
     	Item[] items = new Item[] { new Item("Aged Brie", 0, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateQuality();
+        app.updateSellIn();
         assertEquals(-1, app.items[0].sellIn); 
     }
     
@@ -133,7 +145,7 @@ public class GildedRose2020Test {
     public void sulfuras_Sell_By_Date_Doesnt_Change() {  	
     	Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 9, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateQuality();
+        app.updateSellIn();
         assertEquals(9, app.items[0].sellIn); 
     }
     
@@ -153,7 +165,7 @@ public class GildedRose2020Test {
     public void backstage_Item_Within_Sell_By_Date_Decrease_SellIn_By_One() {  	
     	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateQuality();
+        app.updateSellIn();
         assertEquals(9, app.items[0].sellIn); 
     }
     
@@ -161,13 +173,66 @@ public class GildedRose2020Test {
     public void backstage_Item_Outside_Sell_By_Date_Decrease_SellIn_By_One() {
     	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateQuality();
+        app.updateSellIn();
         assertEquals(-1, app.items[0].sellIn); 
     }
     
 //	Backstage Quality Tests
     
+    @Test
+    public void backstage_Item_Within_Sell_By_Date_Increase_SellIn_By_One_More_Than_Ten_Days_Left() {  	
+    	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(21, app.items[0].quality); 
+    }
     
+    @Test
+    public void backstage_Item_Within_Sell_By_Date_Increase_SellIn_By_Two_More_Than_Five_Days_Less_Than_Ten_Left() {  	
+    	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(22, app.items[0].quality); 
+    }
     
+    @Test
+    public void backstage_Item_Within_Sell_By_Date_Increase_SellIn_By_Three_More_Than_Zero_Days_Less_Than_Five_Left() {  	
+    	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(23, app.items[0].quality); 
+    }
     
+    @Test
+    public void backstage_Item_Outside_Sell_By_Date_Decrease_SellIn_To_Zero() {  	
+    	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality); 
+    }
+    
+    @Test
+    public void backstage_Item_Within_Sell_By_Date_Increase_SellIn_By_One_More_Than_Ten_Days_Left_But_Not_Above_Fifty() {  	
+    	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 15, 50) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality); 
+    }
+    
+    @Test
+    public void backstage_Item_Within_Sell_By_Date_Increase_SellIn_By_Two_More_Than_Five_Days_Less_Than_Ten_Left_But_Not_Above_Fifty() {  	
+    	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 50) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality); 
+    }
+    
+    @Test
+    public void backstage_Item_Within_Sell_By_Date_Increase_SellIn_By_Three_More_Than_Zero_Days_Less_Than_Five_Left_But_Not_Above_Fifty() {  	
+    	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 4, 50) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality); 
+    }
+
 }
