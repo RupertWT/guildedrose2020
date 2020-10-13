@@ -12,11 +12,20 @@ public class GildedRose2020Test {
 	
     @Test
     public void normal_Item_End_To_End() {  	
-    	Item[] items = new Item[] { new Item("Normal Item", 10, 20) };
-        GildedRose2020 app = new GildedRose2020(items);
+    	Item[] items = new Item[] { 
+    			new Item("Normal Item", 10, 20), 
+    			new Item("Sulfuras, Hand of Ragnaros", 11, 22),
+    			new Item("Blah", 15, 10)};
+       
+    	GildedRose2020 app = new GildedRose2020(items);
         app.updateItems();
+        
         assertEquals(9, app.items[0].sellIn); 
         assertEquals(19, app.items[0].quality); 
+        assertEquals(11, app.items[1].sellIn); 
+        assertEquals(22, app.items[1].quality); 
+        assertEquals(14, app.items[2].sellIn); 
+        assertEquals(10, app.items[2].quality); 
     }
 	
 	
