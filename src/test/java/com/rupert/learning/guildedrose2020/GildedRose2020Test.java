@@ -13,7 +13,7 @@ public class GildedRose2020Test {
     public void normal_Item_End_To_End() {  	
     	Item[] items = new Item[] { new Item("Normal Item", 10, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateItems();
+        app.updateQuality();
         assertEquals(9, app.items[0].sellIn); 
         assertEquals(19, app.items[0].quality); 
     }
@@ -25,7 +25,7 @@ public class GildedRose2020Test {
     public void normal_Item_Within_Sell_By_Date_Decrease_SellIn_By_One() {  	
     	Item[] items = new Item[] { new Item("Normal Item", 10, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateSellIn();
+        app.updateQuality();
         assertEquals(9, app.items[0].sellIn); 
     }
     
@@ -33,7 +33,7 @@ public class GildedRose2020Test {
     public void normal_Item_Outside_Sell_By_Date_Decrease_SellIn_By_One() {
     	Item[] items = new Item[] { new Item("Normal Item", 0, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateSellIn();
+        app.updateQuality();
         assertEquals(-1, app.items[0].sellIn); 
     }
     
@@ -85,7 +85,7 @@ public class GildedRose2020Test {
     public void aged_Brie_Within_Sell_By_Date_Decrease_SellIn_By_One() {  	
     	Item[] items = new Item[] { new Item("Aged Brie", 10, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateSellIn();
+        app.updateQuality();
         assertEquals(9, app.items[0].sellIn); 
     }
     
@@ -93,7 +93,7 @@ public class GildedRose2020Test {
     public void aged_Brie_Outside_Sell_By_Date_Decrease_SellIn_By_One() {
     	Item[] items = new Item[] { new Item("Aged Brie", 0, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateSellIn();
+        app.updateQuality();
         assertEquals(-1, app.items[0].sellIn); 
     }
     
@@ -145,7 +145,7 @@ public class GildedRose2020Test {
     public void sulfuras_Sell_By_Date_Doesnt_Change() {  	
     	Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 9, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateSellIn();
+        app.updateQuality();
         assertEquals(9, app.items[0].sellIn); 
     }
     
@@ -165,7 +165,7 @@ public class GildedRose2020Test {
     public void backstage_Item_Within_Sell_By_Date_Decrease_SellIn_By_One() {  	
     	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateSellIn();
+        app.updateQuality();
         assertEquals(9, app.items[0].sellIn); 
     }
     
@@ -173,7 +173,7 @@ public class GildedRose2020Test {
     public void backstage_Item_Outside_Sell_By_Date_Decrease_SellIn_By_One() {
     	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20) };
         GildedRose2020 app = new GildedRose2020(items);
-        app.updateSellIn();
+        app.updateQuality();
         assertEquals(-1, app.items[0].sellIn); 
     }
     
@@ -224,7 +224,7 @@ public class GildedRose2020Test {
     	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 15, 51) };
         GildedRose2020 app = new GildedRose2020(items);
         app.updateQuality();
-        assertEquals(50, app.items[0].quality); 
+        assertEquals(51, app.items[0].quality); 
     }
     
     @Test
@@ -232,7 +232,7 @@ public class GildedRose2020Test {
     	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 51) };
         GildedRose2020 app = new GildedRose2020(items);
         app.updateQuality();
-        assertEquals(50, app.items[0].quality); 
+        assertEquals(51, app.items[0].quality); 
     }
     
     @Test
@@ -240,7 +240,7 @@ public class GildedRose2020Test {
     	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 4, 51) };
         GildedRose2020 app = new GildedRose2020(items);
         app.updateQuality();
-        assertEquals(50, app.items[0].quality); 
+        assertEquals(51, app.items[0].quality); 
     }
 
 }
