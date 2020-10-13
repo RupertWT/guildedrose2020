@@ -196,6 +196,14 @@ public class GildedRose2020Test {
     }
     
     @Test
+    public void backstage_Item_Within_Sell_By_Date_Increase_SellIn_By_Two_More_Eleven_Days_Left() {  	
+    	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 11, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(21, app.items[0].quality); 
+    }
+    
+    @Test
     public void backstage_Item_Within_Sell_By_Date_Increase_SellIn_By_Three_More_Than_Zero_Days_Less_Than_Five_Left() {  	
     	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20) };
         GildedRose2020 app = new GildedRose2020(items);
