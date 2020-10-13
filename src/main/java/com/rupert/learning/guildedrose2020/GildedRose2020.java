@@ -74,6 +74,9 @@ class GildedRose2020 {
                     }
                 }
             }
+            
+            setQualityToMax(i);
+            
         }
     }
 
@@ -88,4 +91,11 @@ class GildedRose2020 {
 	private void decreaseQualityByOne(int i) {
 		items[i].quality = items[i].quality - 1;
 	}
+	
+	private void setQualityToMax(int i) {
+		if (items[i].quality > 50 && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+			items[i].quality = 50;
+		}
+	}
+	
 }
