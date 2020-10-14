@@ -122,7 +122,7 @@ class GildedRose2020 {
 			items[i].quality = items[i].quality - 2;
 		}
 	
-		minQualitySgtrategy(i);	
+		minQualityStrategy(i);	
 		
 	}
 	
@@ -134,10 +134,10 @@ class GildedRose2020 {
 			items[i].quality--;
 		}
 		
-		minQualitySgtrategy(i);	
+		minQualityStrategy(i);	
 	}
 
-	private void minQualitySgtrategy(int i) {
+	private void minQualityStrategy(int i) {
 		
 		if (items[i].quality < 0) {
 			items[i].quality = 0;
