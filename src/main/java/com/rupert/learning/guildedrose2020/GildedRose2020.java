@@ -59,6 +59,9 @@ class GildedRose2020 {
 				if (itemName.contains("Backstage passes")) {
 					backstagePassesQualityStrategy(i);
 					break;
+				} else if (itemName.contains("Conjured")) {
+					conjuredQualityStrategy(i);
+					break;
 				} else {
 					normalItemQualityStrategy(i);
 					break;
@@ -66,6 +69,17 @@ class GildedRose2020 {
 			}
 	}
 
+	private void agedBrieQualityStrategy(int i) {
+		
+		if (pastSellByDate(i)) {
+			items[i].quality = items[i].quality + 2;
+		} else {
+			items[i].quality = items[i].quality + 1;
+		}
+		
+		maxQualityThreshold(i);		
+	}
+	
 	private void backstagePassesQualityStrategy(int i) {
 
 		if (pastSellByDate(i)) {
@@ -81,6 +95,12 @@ class GildedRose2020 {
 		maxQualityThreshold(i);	
 	}
 
+	private void conjuredQualityStrategy(int i) {
+		
+		items[i].quality = items[i].quality - 2;
+		
+	}
+	
 	private void normalItemQualityStrategy(int i) {
 		
 		if (pastSellByDate(i)) {
@@ -98,18 +118,7 @@ class GildedRose2020 {
 			items[i].quality = 0;
 		}
 	}
-
-	private void agedBrieQualityStrategy(int i) {
-		
-		if (pastSellByDate(i)) {
-			items[i].quality = items[i].quality + 2;
-		} else {
-			items[i].quality = items[i].quality + 1;
-		}
-		
-		maxQualityThreshold(i);		
-	}
-
+	
 	private void maxQualityThreshold(int i) {
 		
 		if (items[i].quality > 50) {
