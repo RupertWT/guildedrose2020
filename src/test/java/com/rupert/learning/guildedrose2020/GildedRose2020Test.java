@@ -2,8 +2,6 @@ package com.rupert.learning.guildedrose2020;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Ignore;
-//import org.junit.Ignore;
 import org.junit.Test;
 
 public class GildedRose2020Test {
@@ -16,7 +14,8 @@ public class GildedRose2020Test {
     			new Item("Normal Item", 10, 20), 
     			new Item("Sulfuras, Hand of Ragnaros", 11, 80),
     			new Item("Aged Brie", 0, 10),
-    			new Item("Backstage passes to a TAFKAL80ETC concert", 2, 10)};
+    			new Item("Backstage passes to a TAFKAL80ETC concert", 2, 10),
+    			new Item("Conjured familiar", 2, 10)};
        
     	GildedRose2020 app = new GildedRose2020(items);
         app.updateItems();
@@ -29,6 +28,9 @@ public class GildedRose2020Test {
         assertEquals(12, app.items[2].quality); 
         assertEquals(1, app.items[3].sellIn); 
         assertEquals(13, app.items[3].quality); 
+        assertEquals(1, app.items[4].sellIn); 
+        assertEquals(8, app.items[4].quality); 
+       
     }
 	
 	
