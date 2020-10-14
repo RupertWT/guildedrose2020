@@ -15,7 +15,8 @@ public class GildedRose2020Test {
     	Item[] items = new Item[] { 
     			new Item("Normal Item", 10, 20), 
     			new Item("Sulfuras, Hand of Ragnaros", 11, 80),
-    			new Item("Normal Item", 15, 10)};
+    			new Item("Aged Brie", 0, 10),
+    			new Item("Backstage passes to a TAFKAL80ETC concert", 2, 10)};
        
     	GildedRose2020 app = new GildedRose2020(items);
         app.updateItems();
@@ -24,8 +25,10 @@ public class GildedRose2020Test {
         assertEquals(19, app.items[0].quality); 
         assertEquals(11, app.items[1].sellIn); 
         assertEquals(80, app.items[1].quality);
-        assertEquals(14, app.items[2].sellIn); 
-        assertEquals(9, app.items[2].quality); 
+        assertEquals(-1, app.items[2].sellIn); 
+        assertEquals(12, app.items[2].quality); 
+        assertEquals(1, app.items[3].sellIn); 
+        assertEquals(13, app.items[3].quality); 
     }
 	
 	
