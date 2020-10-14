@@ -33,7 +33,7 @@ class GildedRose2020 {
 				// sellIn doesn't change for Sulfuras
 				break;
 			default:	
-				items[i].sellIn = items[i].sellIn - 1;
+				items[i].sellIn--;
 		}
 	}
     		
@@ -93,7 +93,7 @@ class GildedRose2020 {
 		if (pastSellByDate(i)) {
 			items[i].quality = items[i].quality + 2;
 		} else {
-			items[i].quality = items[i].quality + 1;
+			items[i].quality++;
 		}
 		
 		maxQualityStrategy(i);		
@@ -108,7 +108,7 @@ class GildedRose2020 {
 		} else if (items[i].sellIn <=10) {
 			items[i].quality = items[i].quality + 2;
 		} else {
-			items[i].quality = items[i].quality + 1;
+			items[i].quality++;
 		}
 		
 		maxQualityStrategy(i);	
@@ -131,7 +131,7 @@ class GildedRose2020 {
 		if (pastSellByDate(i)) {
 			items[i].quality = items[i].quality - 2;
 		} else {
-			items[i].quality = items[i].quality - 1;
+			items[i].quality--;
 		}
 		
 		minQualitySgtrategy(i);	
