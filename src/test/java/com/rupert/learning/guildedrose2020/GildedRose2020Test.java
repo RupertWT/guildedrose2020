@@ -292,8 +292,28 @@ public class GildedRose2020Test {
         assertEquals(0, app.items[0].quality);	
     }
     
-    // TODO conjured_Item_Last_Sell_By_Date_Decrease_Quality_By_Two
-    // TODO conjured_Item_Outside_Sell_By_Date_Decrease_Quality_By_Four 
-    // TODO conjured_Item_Outside_Sell_By_Date_Quality_Doesnt_Go_Below_Zero
+    @Test
+    public void conjured_Item_Last_Sell_By_Date_Decrease_Quality_By_Two() {
+    	Item[] items = new Item[] { new Item("Conjured assistant", 1, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(18, app.items[0].quality);	
+    }
+    
+    @Test
+    public void conjured_Item_Outside_Sell_By_Date_Decrease_Quality_By_Four() {
+    	Item[] items = new Item[] { new Item("Conjured Item", 0, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(16, app.items[0].quality); 
+    } 
+    
+    @Test
+    public void conjured_Item_Outside_Sell_By_Date_Quality_Doesnt_Go_Below_Zero() {
+    	Item[] items = new Item[] { new Item("Conjured Thingy", -1, 1) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);	
+    }
     
 }

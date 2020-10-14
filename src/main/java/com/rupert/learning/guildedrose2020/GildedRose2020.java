@@ -97,7 +97,12 @@ class GildedRose2020 {
 
 	private void conjuredQualityStrategy(int i) {
 		
-		items[i].quality = items[i].quality - 2;
+		if (pastSellByDate(i)) {
+			items[i].quality = items[i].quality - 4;
+		} else {
+			items[i].quality = items[i].quality - 2;
+		}
+	
 		minQualityThreshold(i);	
 		
 	}
