@@ -276,7 +276,13 @@ public class GildedRose2020Test {
     
 //	Conjured Quality Tests    
     
-    
+    @Test
+    public void conjured_Item_Within_Sell_By_Date_Decrease_Quality_By_Two() {
+    	Item[] items = new Item[] { new Item("Conjured rabbit", 10, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateQuality();
+        assertEquals(18, app.items[0].quality);	
+    }
     
     
     
