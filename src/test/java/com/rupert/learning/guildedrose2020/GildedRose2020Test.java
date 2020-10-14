@@ -292,8 +292,8 @@ public class GildedRose2020Test {
         assertEquals(0, app.items[0].quality);	
     }
     
-    // TODO conjured_Item_Last_Sell_By_Date_Decrease_Quality_By_One
-    // TODO conjured_Item_Outside_Sell_By_Date_Decrease_Quality_By_Two 
+    // TODO conjured_Item_Last_Sell_By_Date_Decrease_Quality_By_Two
+    // TODO conjured_Item_Outside_Sell_By_Date_Decrease_Quality_By_Four 
     // TODO conjured_Item_Outside_Sell_By_Date_Quality_Doesnt_Go_Below_Zero
     
 }
