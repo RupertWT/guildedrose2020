@@ -55,7 +55,7 @@ class GildedRose2020 {
 
 	private void backstagePassesQualityStrategy(int i) {
 
-		if (items[i].sellIn <=0) {
+		if (pastSellByDate(i)) {
 			items[i].quality = 0;
 		} else if (items[i].sellIn <=5) {
 			items[i].quality = items[i].quality + 3;
@@ -71,7 +71,7 @@ class GildedRose2020 {
 
 	private void normalItemQualityStrategy(int i) {
 		
-		if (items[i].sellIn <=0) {
+		if (pastSellByDate(i)) {
 			items[i].quality = items[i].quality - 2;
 		} else {
 			items[i].quality = items[i].quality - 1;
@@ -89,7 +89,7 @@ class GildedRose2020 {
 
 	private void agedBrieQualityStrategy(int i) {
 		
-		if (items[i].sellIn <=0) {
+		if (pastSellByDate(i)) {
 			items[i].quality = items[i].quality + 2;
 		} else {
 			items[i].quality = items[i].quality + 1;
@@ -103,6 +103,10 @@ class GildedRose2020 {
 		if (items[i].quality > 50) {
 			items[i].quality = 50;
 		}
+	}
+	
+	private boolean pastSellByDate(int i) {
+		return items[i].sellIn <=0;
 	}
 	
 }
