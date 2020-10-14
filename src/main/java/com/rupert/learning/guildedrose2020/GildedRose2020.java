@@ -8,6 +8,7 @@ class GildedRose2020 {
     }
     
     public void updateItems() {
+    	
     	updateSellIn();
     	updateQuality();
     }
@@ -16,28 +17,40 @@ class GildedRose2020 {
     
     
     public void updateSellIn() {
+    	
     	for (int i = 0; i < items.length; i++) {
     		sellIn(i);
     	}	
     }
 
-	private void sellIn(int i) {	
-		items[i].sellIn = (items[i].name.equals("Sulfuras, Hand of Ragnaros")) ? items[i].sellIn : items[i].sellIn -1;
+	private void sellIn(int i) {
+		
+		String itemName = items[i].name;
+		switch(itemName) {
+			case "Sulfuras, Hand of Ragnaros":
+				// sellIn doesn't change for Sulfuras
+				break;
+			default:	
+				items[i].sellIn = items[i].sellIn - 1;
+		}
 	}
     		
 	
 	
 	
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {    	
+        
+    	for (int i = 0; i < items.length; i++) {    	
         	quality(i);   	
         }
     }
 
 	private void quality(int i) {
+		
 		String itemName = items[i].name;
 		switch(itemName) {
 			case "Sulfuras, Hand of Ragnaros":
+				// quality doesn't change for Sulfuras
 				break;
 			case "Aged Brie":
 				agedBrieQualityStrategy(i);
@@ -65,8 +78,7 @@ class GildedRose2020 {
 			items[i].quality = items[i].quality + 1;
 		}
 		
-		maxQualityThreshold(i);
-		
+		maxQualityThreshold(i);	
 	}
 
 	private void normalItemQualityStrategy(int i) {
@@ -77,11 +89,11 @@ class GildedRose2020 {
 			items[i].quality = items[i].quality - 1;
 		}
 		
-		minQualityThreshold(i);
-		
+		minQualityThreshold(i);	
 	}
 
 	private void minQualityThreshold(int i) {
+		
 		if (items[i].quality < 0) {
 			items[i].quality = 0;
 		}
@@ -95,17 +107,18 @@ class GildedRose2020 {
 			items[i].quality = items[i].quality + 1;
 		}
 		
-		maxQualityThreshold(i);	
-		
+		maxQualityThreshold(i);		
 	}
 
 	private void maxQualityThreshold(int i) {
+		
 		if (items[i].quality > 50) {
 			items[i].quality = 50;
 		}
 	}
 	
 	private boolean pastSellByDate(int i) {
+		
 		return items[i].sellIn <=0;
 	}
 	
