@@ -77,7 +77,7 @@ class GildedRose2020 {
 			items[i].quality = items[i].quality + 1;
 		}
 		
-		maxQualityThreshold(i);		
+		maxQualityStrategy(i);		
 	}
 	
 	private void backstagePassesQualityStrategy(int i) {
@@ -92,7 +92,7 @@ class GildedRose2020 {
 			items[i].quality = items[i].quality + 1;
 		}
 		
-		maxQualityThreshold(i);	
+		maxQualityStrategy(i);	
 	}
 
 	private void conjuredQualityStrategy(int i) {
@@ -103,7 +103,7 @@ class GildedRose2020 {
 			items[i].quality = items[i].quality - 2;
 		}
 	
-		minQualityThreshold(i);	
+		minQualitySgtrategy(i);	
 		
 	}
 	
@@ -115,17 +115,17 @@ class GildedRose2020 {
 			items[i].quality = items[i].quality - 1;
 		}
 		
-		minQualityThreshold(i);	
+		minQualitySgtrategy(i);	
 	}
 
-	private void minQualityThreshold(int i) {
+	private void minQualitySgtrategy(int i) {
 		
 		if (items[i].quality < 0) {
 			items[i].quality = 0;
 		}
 	}
 	
-	private void maxQualityThreshold(int i) {
+	private void maxQualityStrategy(int i) {
 		
 		if (items[i].quality > 50) {
 			items[i].quality = 50;
