@@ -256,4 +256,29 @@ public class GildedRose2020Test {
         assertEquals(50, app.items[0].quality); 
     }
 
+//	Conjured Item SellIn Tests
+	
+    @Test
+    public void conjured_Item_Within_Sell_By_Date_Decrease_SellIn_By_One() {  	
+    	Item[] items = new Item[] { new Item("Conjured rabbit", 10, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateSellIn();
+        assertEquals(9, app.items[0].sellIn); 
+    }    
+    
+    @Test
+    public void conjured_Item_Outside_Sell_By_Date_Decrease_SellIn_By_One() {
+    	Item[] items = new Item[] { new Item("Conjured flowers", 0, 20) };
+        GildedRose2020 app = new GildedRose2020(items);
+        app.updateSellIn();
+        assertEquals(-1, app.items[0].sellIn); 
+    }
+    
+//	Conjured Quality Tests    
+    
+    
+    
+    
+    
+    
 }
