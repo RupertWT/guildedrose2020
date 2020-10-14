@@ -96,6 +96,8 @@ class GildedRose2020 {
 			items[i].quality++;
 		}
 		
+//		items[i].quality = pastSellByDate(i) ? items[i].quality + 2 : items[i].quality++;
+		
 		maxQualityStrategy(i);		
 	}
 	
@@ -134,21 +136,19 @@ class GildedRose2020 {
 			items[i].quality--;
 		}
 		
-		minQualityStrategy(i);	
+//		items[i].quality = (pastSellByDate(i)) ? items[i].quality - 2 : items[i].quality + 1;
+		
+		minQualityStrategy(i); 
 	}
 
 	private void minQualityStrategy(int i) {
-		
-		if (items[i].quality < 0) {
-			items[i].quality = 0;
-		}
+
+		items[i].quality = (items[i].quality < 0) ? 0 : items[i].quality;
 	}
 	
 	private void maxQualityStrategy(int i) {
 		
-		if (items[i].quality > 50) {
-			items[i].quality = 50;
-		}
+		items[i].quality = (items[i].quality > 50) ? 50 : items[i].quality;
 	}
 	
 	private boolean pastSellByDate(int i) {
