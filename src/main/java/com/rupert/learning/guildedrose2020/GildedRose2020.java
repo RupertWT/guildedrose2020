@@ -25,9 +25,11 @@ class GildedRose2020 {
 
 	private void applySellInStrategy(int i) {
 		
-		String itemName = items[i].name;
-		switch(itemName) {
-			case "Sulfuras, Hand of Ragnaros":
+		String itemType;
+		itemType = setItemType(i);
+		
+		switch(itemType) {
+			case "Sulfuras":
 				// sellIn doesn't change for Sulfuras
 				break;
 			default:	
