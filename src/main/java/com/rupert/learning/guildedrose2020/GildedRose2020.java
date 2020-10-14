@@ -98,6 +98,7 @@ class GildedRose2020 {
 	private void conjuredQualityStrategy(int i) {
 		
 		items[i].quality = items[i].quality - 2;
+		minQualityThreshold(i);	
 		
 	}
 	
