@@ -8,16 +8,11 @@ class GildedRose2020 {
     }
     
     public void updateItems() {
-    	
     	updateSellIn();
     	updateQuality();
     }
     
-    
-    
-    
     public void updateSellIn() {
-    	
     	for (int i = 0; i < items.length; i++) {
     		applySellInStrategy(i);
     	}	
@@ -30,18 +25,13 @@ class GildedRose2020 {
 		
 		switch(itemType) {
 			case "Sulfuras":
-				// sellIn doesn't change for Sulfuras
 				break;
 			default:	
 				items[i].sellIn--;
 		}
 	}
-    		
-	
-	
-	
-    public void updateQuality() {
-        
+
+    public void updateQuality() {      
     	for (int i = 0; i < items.length; i++) {    	
     		applyQualityStrategy(i);	
         }
@@ -54,7 +44,6 @@ class GildedRose2020 {
 		
 		switch(itemType) {
 			case "Sulfuras":
-				// quality doesn't change for Sulfuras
 				break;
 			case "Aged Brie":
 				agedBrieQualityStrategy(i);
@@ -88,16 +77,8 @@ class GildedRose2020 {
 		return itemType;
 	}
 
-	private void agedBrieQualityStrategy(int i) {
-		
-		if (pastSellByDate(i)) {
-			items[i].quality = items[i].quality + 2;
-		} else {
-			items[i].quality++;
-		}
-		
-//		items[i].quality = pastSellByDate(i) ? items[i].quality + 2 : items[i].quality++;
-		
+	private void agedBrieQualityStrategy(int i) {	
+		items[i].quality = pastSellByDate(i) ? items[i].quality + 2 : items[i].quality + 1;
 		maxQualityStrategy(i);		
 	}
 	
@@ -116,43 +97,25 @@ class GildedRose2020 {
 		maxQualityStrategy(i);	
 	}
 
-	private void conjuredQualityStrategy(int i) {
-		
-		if (pastSellByDate(i)) {
-			items[i].quality = items[i].quality - 4;
-		} else {
-			items[i].quality = items[i].quality - 2;
-		}
-	
-		minQualityStrategy(i);	
-		
+	private void conjuredQualityStrategy(int i) {		
+		items[i].quality = pastSellByDate(i) ? items[i].quality - 4 : items[i].quality - 2;		
+		minQualityStrategy(i);		
 	}
 	
-	private void normalItemQualityStrategy(int i) {
-		
-		if (pastSellByDate(i)) {
-			items[i].quality = items[i].quality - 2;
-		} else {
-			items[i].quality--;
-		}
-		
-//		items[i].quality = (pastSellByDate(i)) ? items[i].quality - 2 : items[i].quality + 1;
-		
+	private void normalItemQualityStrategy(int i) {	
+		items[i].quality = (pastSellByDate(i)) ? items[i].quality - 2 : items[i].quality - 1;		
 		minQualityStrategy(i); 
 	}
 
 	private void minQualityStrategy(int i) {
-
 		items[i].quality = (items[i].quality < 0) ? 0 : items[i].quality;
 	}
 	
 	private void maxQualityStrategy(int i) {
-		
 		items[i].quality = (items[i].quality > 50) ? 50 : items[i].quality;
 	}
 	
-	private boolean pastSellByDate(int i) {
-		
+	private boolean pastSellByDate(int i) {	
 		return items[i].sellIn <=0;
 	}
 	
