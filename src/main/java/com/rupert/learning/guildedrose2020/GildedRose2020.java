@@ -19,11 +19,11 @@ class GildedRose2020 {
     public void updateSellIn() {
     	
     	for (int i = 0; i < items.length; i++) {
-    		sellIn(i);
+    		applySellInStrategy(i);
     	}	
     }
 
-	private void sellIn(int i) {
+	private void applySellInStrategy(int i) {
 		
 		String itemName = items[i].name;
 		switch(itemName) {
@@ -41,32 +41,48 @@ class GildedRose2020 {
     public void updateQuality() {
         
     	for (int i = 0; i < items.length; i++) {    	
-        	quality(i);   	
+    		applyQualityStrategy(i);	
         }
     }
 
-	private void quality(int i) {
+	private void applyQualityStrategy(int i) {
 		
-		String itemName = items[i].name;
-		switch(itemName) {
-			case "Sulfuras, Hand of Ragnaros":
+		String itemType;
+		itemType = setItemType(i);
+		
+		switch(itemType) {
+			case "Sulfuras":
 				// quality doesn't change for Sulfuras
 				break;
 			case "Aged Brie":
 				agedBrieQualityStrategy(i);
 				break;
+			case "Backstage passes":
+				backstagePassesQualityStrategy(i);
+				break;
+			case "Conjured":
+				conjuredQualityStrategy(i);
+				break;
 			default:	
-				if (itemName.contains("Backstage passes")) {
-					backstagePassesQualityStrategy(i);
-					break;
-				} else if (itemName.contains("Conjured")) {
-					conjuredQualityStrategy(i);
-					break;
-				} else {
-					normalItemQualityStrategy(i);
-					break;
-				}
+				normalItemQualityStrategy(i);
+				break;
 			}
+	}
+
+	private String setItemType(int i) {
+		String itemType;
+		if (items[i].name.contains("Sulfuras")) {
+			itemType = "Sulfuras";
+		} else if (items[i].name.contains("Aged Brie")) {
+			itemType = "Aged Brie";
+		} else if (items[i].name.contains("Backstage passes")) {
+			itemType = "Backstage passes";
+		} else if (items[i].name.contains("Conjured")) {
+			itemType = "Conjured";
+		} else {
+			itemType = "Normal";
+		}
+		return itemType;
 	}
 
 	private void agedBrieQualityStrategy(int i) {
