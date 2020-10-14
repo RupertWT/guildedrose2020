@@ -14,40 +14,44 @@ class GildedRose2020 {
     
     
     
+    
     public void updateSellIn() {
     	for (int i = 0; i < items.length; i++) {
     		sellIn(i);
     	}	
     }
 
-			private void sellIn(int i) {	
-				items[i].sellIn = (items[i].name.equals("Sulfuras, Hand of Ragnaros")) ? items[i].sellIn : items[i].sellIn -1;
-			}
+	private void sellIn(int i) {	
+		items[i].sellIn = (items[i].name.equals("Sulfuras, Hand of Ragnaros")) ? items[i].sellIn : items[i].sellIn -1;
+	}
     		
 	
-			
+	
+	
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-                    	
-        	String itemName = items[i].name;
-        	switch(itemName) {
-        		case "Sulfuras, Hand of Ragnaros":
-        			break;
-        		case "Aged Brie":
-        			agedBrieQualityStrategy(i);
-           			break;
-        		default:	
-    				if (itemName.contains("Backstage passes")) {
-    					backstagePassesQualityStrategy(i);
-    					break;
-       				} else {
-       					normalItemQualityStrategy(i);
-    					break;
-    				}
-    			}   	
-    	
+        for (int i = 0; i < items.length; i++) {    	
+        	quality(i);   	
         }
     }
+
+	private void quality(int i) {
+		String itemName = items[i].name;
+		switch(itemName) {
+			case "Sulfuras, Hand of Ragnaros":
+				break;
+			case "Aged Brie":
+				agedBrieQualityStrategy(i);
+				break;
+			default:	
+				if (itemName.contains("Backstage passes")) {
+					backstagePassesQualityStrategy(i);
+					break;
+				} else {
+					normalItemQualityStrategy(i);
+					break;
+				}
+			}
+	}
 
 	private void backstagePassesQualityStrategy(int i) {
 
