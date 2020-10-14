@@ -70,6 +70,7 @@ class GildedRose2020 {
 	}
 
 	private String setItemType(int i) {
+		
 		String itemType;
 		if (items[i].name.contains("Sulfuras")) {
 			itemType = "Sulfuras";
